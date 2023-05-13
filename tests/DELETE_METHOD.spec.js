@@ -8,6 +8,7 @@ test('should be able to create a new post', async ({ request }) => {
     // Send a DELETE request
     const response = await request.delete(url);
 
+    
     // Verify data is correct
     expect(response.status()).toBe(200);
 });
