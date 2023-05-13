@@ -19,15 +19,14 @@ test('should be able to create a new post', async ({ request }) => {
     // Send a POST request
     const response = await request.post(url, options);
     const responseBody = await response.json();
-    console.log(responseBody)
-
+    
     // Show log
     console.log(response.status());
     console.log(responseBody);
 
     // Verify data is correct
     expect(response.status()).toBe(201);
-    const {title, body, unserId, id} = responseBody
+    const {title, body, unserId, id} = responseBody;
     expect(title).toBe(postContent.title);
     expect(body).toBe(postContent.body);
     expect(unserId).toBe(postContent.unserId);

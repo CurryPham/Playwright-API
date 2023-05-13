@@ -5,6 +5,7 @@ test('should be able to create a new post', async ({ request }) => {
     // Construct data
     const url = 'https://jsonplaceholder.typicode.com/posts/1';
     const putContent = {
+        id: 1,
         title: 'this is title',
         body: 'this is body',
         unserId: 1,
@@ -18,18 +19,18 @@ test('should be able to create a new post', async ({ request }) => {
 
     // Send a PUT request
     const response = await request.put(url, options);
+    const status = await response.status();
     const responseBody = await response.json();
-    console.log(responseBody)
-
+    
     // Show log
+    console.log(responseBody)
     console.log(response.status());
-    console.log(responseBody);
 
     // Verify data is correct
-    expect(response.status()).toBe(200);
-    const {title, body, unserId, id} = responseBody
+    expect(status).toBe(200);
+    const {title, body, unserId, id} = responseBody;
+    expect(id).toBe(putContent.id);
     expect(title).toBe(putContent.title);
     expect(body).toBe(putContent.body);
     expect(unserId).toBe(putContent.unserId);
-    expect(id).toBeTruthy();
 });
