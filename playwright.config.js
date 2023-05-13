@@ -23,6 +23,7 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list'],
+    ["allure-playwright"],
     ['./reporter/CustomReporter.js'],
     ['html', {
     open: "on-failure",
